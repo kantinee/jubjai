@@ -39,7 +39,8 @@
                     <table border=0 align="center" >
                         <tr>
                             <td >1. ฉันรู้สึกเศร้า</td>
-                            <td width="10%"><input type="radio" ng-model="q1" value="1"  >ไม่มี</td>
+                            
+                            <td width="10%"><input type="radio" ng-model="q1" value="1" data-toggle="ying tooltip" >ไม่มี</td>
                             <td width="10%"><input type="radio" ng-model="q1" value="2">เล็กน้อย</td>
                             <td width="10%"><input type="radio" ng-model="q1" value="3">ปานกลาง</td>
                             <td width="10%"><input type="radio" ng-model="q1" value="4">ค่อนข้างมาก</td>
@@ -366,6 +367,11 @@
             function newDoc(xurl) {
                 window.location.assign(xurl)
             }
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();   
+            });
         </script>
     </body>
     

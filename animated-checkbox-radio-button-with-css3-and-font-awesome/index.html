@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Animated Checkbox &amp; Radio Button Demo</title>
+<link href="http://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<style class="cp-pen-styles">
+::-moz-selection {
+ background: white;
+}
+
+::selection { background: white; }
+ @-webkit-keyframes 
+icon-beat {  0% {
+ -webkit-transform: scale(2);
+ -ms-transform: scale(2);
+ transform: scale(2);
+}
+ 100% {
+ -webkit-transform: scale(1);
+ -ms-transform: scale(1);
+ transform: scale(1);
+}
+}
+ @keyframes 
+icon-beat {  0% {
+ -webkit-transform: scale(2);
+ -ms-transform: scale(2);
+ transform: scale(2);
+}
+ 100% {
+ -webkit-transform: scale(1);
+ -ms-transform: scale(1);
+ transform: scale(1);
+}
+}
+
+* {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+body {
+  padding: 1rem;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  font: normal 200 14px/1.5rem "Roboto", "Helvetica Neue", sans-serif;
+  color: #666;
+}
+
+h2 {
+  font-size: 1rem;
+  color: #444;
+  margin: 0;
+}
+
+h2 small {
+ font-size: .8rem;
+  color: #a2a2a2;
+  display: block;
+  font-weight: normal;
+}
+
+label {
+  display: block;
+  position: relative;
+  padding: 0.5rem 1rem;
+  line-height: 28px;
+  font-weight: normal;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+label:last-of-type { margin-right: 1rem; }
+
+label i {
+  display: inline-block;
+  height: 25px;
+  position: relative;
+  top: 6px;
+  font-style: normal;
+  color: #ccc;
+}
+
+label span {
+  display: inline-block;
+  margin-left: 5px;
+  line-height: 25px;
+  color: gray;
+}
+
+input[type="radio"],
+input[type="checkbox"] { display: none; }
+
+input[type="radio"] + i:before,
+input[type="checkbox"] + i:before {
+  font-family: 'FontAwesome';
+  font-size: 28px;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+}
+
+input[type="radio"]:checked + i,
+input[type="checkbox"]:checked + i {
+  position: relative;
+  -webkit-animation: icon-beat 0.1s ease;
+  animation: icon-beat 0.1s ease;
+}
+
+input[type="radio"]:checked + i + span,
+input[type="checkbox"]:checked + i + span {
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+input[type="radio"] + i:before { content: "\f10c"; }
+
+input[type="radio"]:checked + i:before { content: "\f111"; }
+
+input[type="radio"]:checked + i + span,
+input[type="radio"]:checked + i:before { color: rgba(0, 128, 128, 0.5); }
+
+input[type="checkbox"] + i:before { content: "\f096"; }
+
+input[type="checkbox"]:checked + i:before { content: "\f046"; }
+
+input[type="checkbox"]:checked + i + span,
+input[type="checkbox"]:checked + i:before { color: rgba(0, 128, 0, 0.5); }
+
+.form-horizontal,
+.form-vertical {
+  padding: 2rem;
+  margin: 1rem;
+  float: left;
+  clear: both;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.form-horizontal h2 { margin-bottom: 0.5rem; }
+
+.form-horizontal label { float: left; }
+
+.form-horizontal label:first-of-type { padding-left: 0; }
+
+.form-horizontal:after,
+.form-horizontal:before {
+  display: table;
+  content: " ";
+}
+
+.form-horizontal:after { clear: both; }
+
+.form-vertical label {
+  float: none;
+  padding-left: 0;
+}
+
+.form-vertical label:first-of-type { padding-top: 1rem; }
+</style>
+</head>
+
+<body>
+<div id="css-script-menu">
+  <div class="css-script-center">
+    <ul>
+      <li><a href="http://www.cssscript.com/image-caption-hover-animations-with-css3-transitions-and-transforms/">Download</a></li>
+      <li><a href="http://www.cssscript.com/">Back To CSS Script</a></li>
+    </ul>
+    <div class="css-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* CSSScript Demo Page */
+google_ad_slot = "3025259193";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script> 
+      <script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+    <div class="css-script-clear"></div>
+  </div>
+</div>
+<div class="form-horizontal form-required" style="margin-top:150px;">
+  <h2>Checkboxes</h2>
+  <label for="check-one">
+    <input type="checkbox" name="check-one" id="check-one" value="checkone"/>
+    <i></i> <span>Check One</span> </label>
+  <label for="check-two">
+    <input type="checkbox" name="check-two" id="check-two" value="check-two"/>
+    <i></i> <span>Check Two</span> </label>
+  <label for="check-three">
+    <input type="checkbox" name="check-three" id="check-three" value="check-three"/>
+    <i></i> <span>Check Three</span> </label>
+</div>
+<div class="form-vertical form-required">
+  <h2>Radio buttons</h2>
+  <label for="radio-one">
+    <input type="radio" name="exampleRadios" id="radio-one" value="radio-one"/>
+    <i></i> <span>Radio One</span> </label>
+  <label for="radio-two">
+    <input type="radio" name="exampleRadios" id="radio-two" value="doggie"/>
+    <i></i> <span>Radio Two</span> </label>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46156385-1', 'cssscript.com');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
