@@ -258,9 +258,12 @@
 
                 
                 $scope.verifydata = function(){ 
-                    alert($scope.q1);
+                    //alert($scope.q1);
                     if ($scope.q1!='') 
-                        $scope.addRecord(); 
+                        if ($scope.q2!='')
+                            $scope.addRecord(); 
+                        else 
+                            alert('Please select Q1');
                     else 
                         alert('Please select Q1');
            
