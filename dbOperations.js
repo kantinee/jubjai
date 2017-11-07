@@ -71,6 +71,7 @@ module.exports = {
         });
 
     },
+    /*
     addFeedback : function(req, res){
         
         console.write("in dbOperation addFeedback");
@@ -116,7 +117,7 @@ module.exports = {
         });
 
     },
-    
+    */
     createTable : function(req, res){
         var pg = require('pg');   
         
