@@ -257,13 +257,11 @@
                 } 
 
                 $scope.verifydata = function(){ 
+                    alert($scope.q1);
                     if ($scope.q1!='') 
-                        if ($scope.q2!='')                            
-                                                                                                    if (fName!='') 
-                                                                                                        alert('save')  ;
-                                                                                                        //addRecord(); 
-                        else alert('Please select Q2');
-                    else alert('Please select Q1');
+                        addRecord(); 
+                    else 
+                        alert('Please select Q1');
            
                 }
                 
