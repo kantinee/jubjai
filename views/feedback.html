@@ -304,7 +304,7 @@
             myApp.controller('postgreSQLCtrl', ['$scope' ,'$http','$window', '$location',  function($scope,$http) {
                 $scope.val1 = 'This is temp Val' ;  
                 $scope.fName = '';
-            /*  $scope.sex= '';
+                $scope.sex= '';
                 $scope.age= '';
                 $scope.edu= '';
                 $scope.job= '';
@@ -336,7 +336,7 @@
                          $scope.dataset = data || "Request failed "; 
                      }); 
                } 
-               */  
+                 
                $scope.verifydata = function(){ 
                     alert($scope.job);
                     if ($scope.sex!='') 
@@ -358,10 +358,7 @@
                                                                                     if ($scope.badq!='')
                                                                                         if ($scope.qa1!='')
                                                                                             if ($scope.qa2!='')
-                                                                                                if ($scope.qacomment!='')
-                                                                                                    $scope.addRecord(); 
-                                                                                                else 
-                                                                                                    alert('โปรดระบุข้อเสนอแนะอื่นๆ ');
+                                                                                                $scope.addRecord(); 
                                                                                             else    
                                                                                                 alert('โปรดประเมินภาพรวมให้ครบ');
                                                                                         else 
