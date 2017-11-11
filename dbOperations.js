@@ -31,9 +31,19 @@ module.exports = {
         var conString = process.env.DATABASE_URL ||  "postgres://postgres:chatbot@localhost:5432/jubjai-bot-db";
         var client = new pg.Client(conString);
 
+        var score = (int(req.query.q1) + int(req.query.q2)+int(req.query.q3)+int(req.query.q4)+int(req.query.q5)+int(req.query.q6)+int(req.query.q7)+int(req.query.q8)+int(req.query.q9)+int(req.query.q10)+int(req.query.q11)+int(req.query.q12)+int(req.query.q13)+int(req.query.q14)+int(req.query.q15)+int(req.query.q16)+int(req.query.q17)+int(req.query.q18)+int(req.query.q19)+int(req.query.q20))/20 ;
+        var Level = "0";
+        if (score<0.2){Level="ระดับ 0 : ไม่มีภาวะซึมเศร้า"; ximg="https://i.imgur.com/I5KX4Hb.png";}
+        else if (0.2<=score<1.08){Level="ระดับ 1 : มีอารมณ์เศร้าบ้าง แต่อยู่ในระดับปกติที่คนทั่วไปก็สามารถรู้สึกเช่นนี้ได้" ; ximg="https://i.imgur.com/xEBK5HD.jpg";}
+        else if (1.08<=score<1.37){Level="ระดับ 2 : มีภาวะซึมเศร้าปานกลาง ควรสังเกตอารมณ์ตนเองอย่างใกล้ชิด ถ้าความรู้สึกเช่นนี้คงอยู่ต่อเนื่องไปอีกประมาณ 2 สัปดาห์ หรือเริ่มรู้สึกว่าสภาพอารมณ์รบกวนการทำงานหรือการใช้ชีวิตประจำวัน ควรขอคำแนะนำหรือความช่วยเหลือจากผู้เชี่ยวชาญด้านสุขภาพจิต หรือโทร 1323 สายด่วนสุขภาพจิตฟรี ตลอด 24 ชั่วโมง"; ximg="https://i.imgur.com/7IIJDgD.jpg";}
+        else if (1.37<=score<1.52){Level="ระดับ 3 : มีความเสี่ยงที่จะอยู่ในภาวะซึมเศร้า ควรพบผู้เชี่ยวชาญด้านสุขภาพจิตเพื่อรับการตรวจวินิจฉัยและดูแลอย่างเหมาะสม หรือเริ่มจากโทรปรึกษาสายด่วนสุขภาพจิต 1323 โทรฟรี ตลอด 24 ชั่วโมง"; ximg="https://i.imgur.com/oYWzFWJ.jpg";}
+        else if (score>=1.52){Level="ระดับ 4 : มีความเสี่ยงที่จะอยู่ในภาวะซึมเศร้า ควรพบผู้เชี่ยวชาญด้านสุขภาพจิตเพื่อรับการตรวจวินิจฉัยและดูแลอย่างเหมาะสม หรือเริ่มจากโทรปรึกษาสายด่วนสุขภาพจิต 1323 โทรฟรี ตลอด 24 ชั่วโมง"; ximg="https://i.imgur.com/sQU6Z19.jpg";}
+        else {Level="ไม่สามารถประเมินได้"; ximg="http://fb.sanook.com/static_content/widget/full/graphic_1/1234/310234/7e4f4fe57089d9be1640f93dfa5a9ad5_1233737640.gif";};
         client.connect();
-        var query = client.query("insert into tmhq (fbid,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19,q20) "+ 
+        var query = client.query("insert into tmhq (fbid,score,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19,q20) "+ 
                                 "values ('"+req.query.fName+"','"+
+                                score +"','"+
+                                req.query.q1+"','"+
                                 req.query.q1+"','"+
                                 req.query.q2+"','"+
                                 req.query.q3+"','"+
@@ -58,6 +68,7 @@ module.exports = {
     
         query.on("end", function (result) {          
             client.end(); 
+            dialog.showMessageBox({ message: Level, buttons: ["OK"],title:"แจ้งผลการทดสอบ TMHQ",icon:ximg,type:"icon" });
             res.write('Success');
             res.end(); 
                         
