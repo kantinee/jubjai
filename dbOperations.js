@@ -27,10 +27,11 @@ module.exports = {
 
     addRecord : function(req, res){
         var pg = require('pg');  
+        var dialog = require('electron');
         
         var conString = process.env.DATABASE_URL ||  "postgres://postgres:chatbot@localhost:5432/jubjai-bot-db";
         var client = new pg.Client(conString);
-
+        
         var score = (int(req.query.q1) + int(req.query.q2)+int(req.query.q3)+int(req.query.q4)+int(req.query.q5)+int(req.query.q6)+int(req.query.q7)+int(req.query.q8)+int(req.query.q9)+int(req.query.q10)+int(req.query.q11)+int(req.query.q12)+int(req.query.q13)+int(req.query.q14)+int(req.query.q15)+int(req.query.q16)+int(req.query.q17)+int(req.query.q18)+int(req.query.q19)+int(req.query.q20))/20 ;
         var Level = "0";
         if (score<0.2){Level="ระดับ 0 : ไม่มีภาวะซึมเศร้า"; ximg="https://i.imgur.com/I5KX4Hb.png";}
@@ -68,7 +69,13 @@ module.exports = {
     
         query.on("end", function (result) {          
             client.end(); 
-            dialog.showMessageBox({ message: Level, buttons: ["OK"],title:"แจ้งผลการทดสอบ TMHQ",type:"info" });
+            electron.dialog.showMessageBox({
+                type: 'info',
+                buttons: ['OK'],
+                message: Level,
+                title:"แจ้งผลการทดสอบ TMHQ"
+            });
+            
             res.write('Success');
             res.end(); 
                         
