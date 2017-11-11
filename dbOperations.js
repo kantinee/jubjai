@@ -68,7 +68,7 @@ module.exports = {
     
         query.on("end", function (result) {          
             client.end(); 
-            dialog.showMessageBox({ message: Level, buttons: ["OK"],title:"แจ้งผลการทดสอบ TMHQ",icon:ximg,type:"icon" });
+            dialog.showMessageBox({ message: Level, buttons: ["OK"],title:"แจ้งผลการทดสอบ TMHQ",type:"info" });
             res.write('Success');
             res.end(); 
                         
